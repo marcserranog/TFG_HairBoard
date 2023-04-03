@@ -3,7 +3,7 @@ package domain;
 import java.util.List;
 
 public class Company {
-    private long id;
+    private String id;
     private String name;
     private String description;
     private String address;
@@ -13,7 +13,7 @@ public class Company {
     private List<Service> services;
     private String openingHours;
 
-    public Company(long id, String name, String description, String address, String email,
+    public Company(String id, String name, String description, String address, String email,
                    String phoneNumber, String website, List<Service> services, String openingHours) {
         this.id = id;
         this.name = name;
@@ -26,11 +26,11 @@ public class Company {
         this.openingHours = openingHours;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

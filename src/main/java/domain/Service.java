@@ -1,106 +1,62 @@
 package domain;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
+import java.math.BigDecimal;
 
 public class Service {
     private String id;
-    private LinkedList<Store> listStore = new LinkedList<>();
-    private int timeRoute;
-    private int kmRoute;
-    private int priceLoadingUnloading;
-    private Truck truck;
+    private String name;
+    private String description;
+    private double price;
+    private List<Company> companies;
 
-    private List<Integer> kmsBetweenStores = new LinkedList<>();
-    private int origin;
-    private int destination;
-
-
-
-    public Service(Store initialStore, Store finalStore, Truck truck) throws Exception {
-
-        List<Store> auxiliarList = Arrays.asList(initialStore.getAllStops(finalStore));
-        this.listStore = new LinkedList<>(auxiliarList) ;
-
-        this.origin = initialStore.convertStringToInt(initialStore.getActualLocation());
-        this.destination = finalStore.convertStringToInt(initialStore.getActualLocation());
-
-        this.truck=truck;
-
-        this.timeRoute = calculateTimeRoute(); //metode que retorni temps
-        this.kmRoute = calculateTimeRoute(); //metode que retorni els km totals
-        this.priceLoadingUnloading = calculatePriceCID(); //metode que calculi el preu CID
-        //Generar totes les parades, recorre cada parada i movem el camió.
-    }
-
-    public Service(Store origin, Store destination) throws Exception {
-        List<Store> auxiliarList = Arrays.asList(origin.getAllStops(destination));
-        this.listStore = new LinkedList<>(auxiliarList) ;
-
-        this.origin = origin.convertStringToInt(destination.getActualLocation());
-        this.destination = destination.convertStringToInt(origin.getActualLocation());
-
-        this.timeRoute = calculateTimeRoute(); //metode que retorni temps
-        this.kmRoute = calculateTimeRoute(); //metode que retorni els km totals
-        this.priceLoadingUnloading = calculatePriceCID(); //metode que calculi el preu CID
-        //Generar totes les parades, recorre cada parada i movem el camió.
+    public Service(String id, String name, String description, double price, List<Company> companies) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.companies = companies;
     }
 
     public String getId() {
         return id;
     }
-    public LinkedList<Store> getListStore() {
-        return listStore;
-    }
-    public int getTimeRoute() {
-        return timeRoute;
-    }
-    public int getKmRoute() {
-        return kmRoute;
-    }
-    public int getPriceLoadingUnloading() {
-        return priceLoadingUnloading;
-    }
-    public Truck getTruck() {
-        return truck;
-    }
-    public int getOrigin() {
-        return origin;
-    }
-    public int getDestination() {
-        return destination;
-    }
-    public void setTruck(Truck truck) {
-        this.truck = truck;
+
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int calculateTimeRoute() throws Exception {
-        if(this.origin.equals(destination)) throw new Exception("Same stop.");
-        return (listStore.size() * 5 + kmRoute / 100); //quantitat de parades * 5h que esta a cada parada + els km totals de la ruta entre 100
+    public String getName() {
+        return name;
     }
 
-    private int calculateDriverPrice() {
-
-        this.truck.setDrivingTime(this.truck.getKmsTraveled() / ConstantUtilities.VELOCITY);
-        int time = this.truck.getDrivingTime();
-
-        int howManyStops = listStore.size()-2;
-        if (howManyStops > 0) {
-            time = time + ((howManyStops)* ConstantUtilities.WAITING_PERIOD);
-            truck.setDrivingTime(time);
-        }
-        return (int) (time * ConstantUtilities.DRIVER_PRICE_PER_HOUR);
-
-    }
-    public int calculatePriceCID() {
-        return (listStore.size() * 1000 - 1000); //quantitat de parades * 1000 (preu de la parada) - 1000 (orígen i destí són 500)
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void moveTruck() throws Exception {
-        for (Store store : listStore) {
-            truck.makeRoute(store.getDistanceBetweenLocations().get(store.getActualLocation()));
-        }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public List<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(List<Company> companies) {
+        this.companies = companies;
     }
 }
+
 
