@@ -8,4 +8,3 @@ INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VAL
 INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VALUES ('Sofía', 'López', 'sofia.lopez@gmail.com', '666666666', '2023-06-08');
 INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VALUES ('Miguel', 'Gómez', 'miguel.gomez@gmail.com', '777777777', '2023-06-09');
 INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VALUES ('Ana', 'Torres', 'ana.torres@gmail.com', '888888888', '2023-06-10');
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VALUES ('Martín', 'Pérez', 'martin.perez@gmail.com', '987654321', '2023-06-01');
