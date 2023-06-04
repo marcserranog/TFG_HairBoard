@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = {"http://localhost:52765"})
+@CrossOrigin(origins = {"http://localhost:54267"})
 @RestController
 @RequestMapping("/api")
 public class ClienteRestController {
@@ -105,7 +105,7 @@ public class ClienteRestController {
         }
         response.put("mensaje","El cliente ha sido eliminado con éxito! ");
         return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
-        
+
     }
 
 }
