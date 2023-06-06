@@ -12,12 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://localhost:49574"})
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class ClienteRestController {
@@ -34,7 +35,7 @@ public class ClienteRestController {
         Pageable pageable = PageRequest.of(page,4);
         return clienteService.findAll(pageable);
     }
-    
+
     @GetMapping("/clientes/{id}")
     public ResponseEntity<?> show(@PathVariable Long id){
         Cliente cliente = null;
@@ -137,6 +138,13 @@ public class ClienteRestController {
             return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
         }
         response.put("mensaje","El cliente ha sido eliminado con éxito! ");
+        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+    }
+    @PostMapping("/clientes/upload")
+    public ResponseEntity<?> upload(@RequestParam("archivo")MultipartFile archivo, @RequestParam("id") Long id){
+        Map<String,Object> response = new HashMap<>();
+
+        Cliente cliente = clienteService.findById(id);
         return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
 
     }

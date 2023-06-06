@@ -8,3 +8,14 @@ INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VAL
 INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VALUES ('Sofía', 'López', 'sofia.lopez@gmail.com', '666666666', '2023-06-08');
 INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VALUES ('Miguel', 'Gómez', 'miguel.gomez@gmail.com', '777777777', '2023-06-09');
 INSERT INTO clientes (first_name, last_name, email, phone_number, create_at) VALUES ('Ana', 'Torres', 'ana.torres@gmail.com', '888888888', '2023-06-10');
+
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Belleza Total', 'belleza.total@example.com', '555-1234', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Estética Glamour', 'estetica.glamour@example.com', '555-5678', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Spa Bella Vita', 'spa.bellavita@example.com', '555-9012', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Estudio de Belleza Elegancia', 'estudio.elegancia@example.com', '555-3456', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Salón de Belleza Encanto', 'salon.encanto@example.com', '555-7890', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Estética Armonía', 'estetica.armonia@example.com', '555-2345', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Centro de Estética Belleza Natural', 'centro.bellezanatural@example.com', '555-6789', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Spa Zen', 'spa.zen@example.com', '555-0123', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Salón de Belleza Delicadeza', 'salon.delicadeza@example.com', '555-4567', '2023-06-10');
+INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Estudio de Estética Sofisticada', 'estudio.sofisticada@example.com', '555-8901', '2023-06-10');
