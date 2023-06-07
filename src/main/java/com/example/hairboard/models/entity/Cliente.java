@@ -9,6 +9,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.example.hairboard.models.entity.Region;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="clientes")
 public class Cliente implements Serializable{
@@ -36,6 +39,11 @@ public class Cliente implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date createAt;
     private String foto;
+    @NotNull(message="La region no puede estar vacío.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private Region region;
     @PrePersist
     public void prePersist(){
         createAt = new Date();
@@ -94,12 +102,17 @@ public class Cliente implements Serializable{
         this.createAt = createAt;
     }
 
-    public String getFoto() {
-        return foto;
-    }
-
+    public String getFoto() { return foto;}
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 }
 

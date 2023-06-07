@@ -2,6 +2,7 @@ package com.example.hairboard.models.services;
 
 import com.example.hairboard.models.dao.IClienteDao;
 import com.example.hairboard.models.entity.Cliente;
+import com.example.hairboard.models.entity.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,4 +39,12 @@ public class ClienteService implements IClienteService{
     public void delete(Long id) {
         clienteDao.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Region> findAllRegiones() {
+        return clienteDao.findAllRegiones();
+    }
+
 }
+

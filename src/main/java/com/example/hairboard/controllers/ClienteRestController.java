@@ -1,6 +1,7 @@
 package com.example.hairboard.controllers;
 
 import com.example.hairboard.models.entity.Cliente;
+import com.example.hairboard.models.entity.Region;
 import com.example.hairboard.models.services.IClienteService;
 import com.example.hairboard.models.services.IUploadFileService;
 import org.slf4j.Logger;
@@ -124,6 +125,7 @@ public class ClienteRestController {
             clienteActual.setFirstName(cliente.getFirstName());
             clienteActual.setPhoneNumber(cliente.getPhoneNumber());
             clienteActual.setEmail(cliente.getEmail());
+            clienteActual.setRegion(cliente.getRegion());
             //clienteActual.setCreateAt(cliente.getCreateAt());
 
 
@@ -199,6 +201,10 @@ public class ClienteRestController {
         cabecera.add(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\""+recurso.getFilename()+"\"");
 
         return new ResponseEntity<Resource>(recurso,cabecera, HttpStatus.OK);
+    }
+    @GetMapping("/clientes/regiones")
+    public List<Region> listarRegiones(){
+        return clienteService.findAllRegiones();
     }
 
 }
