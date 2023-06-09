@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.example.hairboard.models.entity.Region;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -24,9 +23,9 @@ public class Cliente implements Serializable{
     @NotEmpty(message="No puede estar vacio.")
     @Size(min=1)
     @Column(nullable = false)
-    private String firstName;
+    private String nombre;
     @NotEmpty(message="No puede estar vacio.")
-    private String lastName;
+    private String apellido;
     @NotEmpty(message="No puede estar vacio.")
     @Email
     @Column(nullable = false,unique = true)
@@ -48,10 +47,10 @@ public class Cliente implements Serializable{
     public void prePersist(){
         createAt = new Date();
     }
-    public Cliente(Long id, String firstName, String lastName, String email, String phoneNumber, Date createAt) {
+    public Cliente(Long id, String nombre, String apellido, String email, String phoneNumber, Date createAt) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.createAt = createAt;
@@ -67,17 +66,17 @@ public class Cliente implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-    public String getFirstName() {
-        return firstName;
+    public String getNombre() {
+        return nombre;
     }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    public String getLastName() {
-        return lastName;
+    public String getApellido() {
+        return apellido;
     }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setApellido(String lastName) {
+        this.apellido = lastName;
     }
     public String getEmail() {
         return email;

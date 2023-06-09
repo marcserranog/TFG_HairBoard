@@ -15,17 +15,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -49,7 +46,7 @@ public class ClienteRestController {
         Pageable pageable = PageRequest.of(page,4);
         return clienteService.findAll(pageable);
     }
-
+@Secured({"ROLE_ADMIN","ROLE_USER"})
     @GetMapping("/clientes/{id}")
     public ResponseEntity<?> show(@PathVariable Long id){
         Cliente cliente = null;
@@ -69,6 +66,7 @@ public class ClienteRestController {
         }
         return new ResponseEntity<Cliente>(cliente,HttpStatus.OK);
     }
+    @Secured("ROLE_ADMIN")
     @PostMapping("/clientes")
     public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result){
 
@@ -98,6 +96,7 @@ public class ClienteRestController {
         return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
     }
 
+    @Secured("ROLE_ADMIN")
     @PutMapping("/clientes/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente,BindingResult result, @PathVariable Long id){
         Cliente clienteActual = clienteService.findById(id);
@@ -121,8 +120,8 @@ public class ClienteRestController {
             return new ResponseEntity<Map<String,Object>>(response,HttpStatus.NOT_FOUND);
         }
         try {
-            clienteActual.setLastName(cliente.getLastName());
-            clienteActual.setFirstName(cliente.getFirstName());
+            clienteActual.setApellido(cliente.getApellido());
+            clienteActual.setNombre(cliente.getNombre());
             clienteActual.setPhoneNumber(cliente.getPhoneNumber());
             clienteActual.setEmail(cliente.getEmail());
             clienteActual.setRegion(cliente.getRegion());
@@ -142,6 +141,7 @@ public class ClienteRestController {
 
         return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
     }
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/clientes/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         Map<String,Object> response = new HashMap<>();
@@ -160,6 +160,8 @@ public class ClienteRestController {
         response.put("mensaje","El cliente ha sido eliminado con éxito! ");
         return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
     }
+
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @PostMapping("/clientes/upload")
     public ResponseEntity<?> upload(@RequestParam("archivo")MultipartFile archivo, @RequestParam("id") Long id) throws IOException {
         Map<String,Object> response = new HashMap<>();
@@ -202,6 +204,7 @@ public class ClienteRestController {
 
         return new ResponseEntity<Resource>(recurso,cabecera, HttpStatus.OK);
     }
+    @Secured("ROLE_ADMIN")
     @GetMapping("/clientes/regiones")
     public List<Region> listarRegiones(){
         return clienteService.findAllRegiones();

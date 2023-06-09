@@ -8,16 +8,16 @@ INSERT INTO regiones (id, nombre) VALUES (6, 'Africa');
 INSERT INTO regiones (id, nombre) VALUES (7, 'Oceanía');
 INSERT INTO regiones (id, nombre) VALUES (8, 'Antártida');
 
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Juan', 'Pérez', 'juan.perez@gmail.com', '987654321', '2023-06-01',1);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('María', 'González', 'maria.gonzalez@gmail.com', '123456789', '2023-06-02',1);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Pedro', 'Sánchez', 'pedro.sanchez@gmail.com', '555555555', '2023-06-03',3);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Laura', 'López', 'laura.lopez@gmail.com', '111111111', '2023-06-04',3);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Antonio', 'Martínez', 'antonio.martinez@gmail.com', '222222222', '2023-06-05',4);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Isabel', 'Rodríguez', 'isabel.rodriguez@gmail.com', '333333333', '2023-06-06',5);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Carlos', 'Fernández', 'carlos.fernandez@gmail.com', '444444444', '2023-06-07',5);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Sofía', 'López', 'sofia.lopez@gmail.com', '666666666', '2023-06-08',4);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Miguel', 'Gómez', 'miguel.gomez@gmail.com', '777777777', '2023-06-09',2);
-INSERT INTO clientes (first_name, last_name, email, phone_number, create_at, region_id) VALUES ('Ana', 'Torres', 'ana.torres@gmail.com', '888888888', '2023-06-10',6);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Juan', 'Pérez', 'juan.perez@gmail.com', '987654321', '2023-06-01',1);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('María', 'González', 'maria.gonzalez@gmail.com', '123456789', '2023-06-02',1);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Pedro', 'Sánchez', 'pedro.sanchez@gmail.com', '555555555', '2023-06-03',3);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Laura', 'López', 'laura.lopez@gmail.com', '111111111', '2023-06-04',3);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Antonio', 'Martínez', 'antonio.martinez@gmail.com', '222222222', '2023-06-05',4);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Isabel', 'Rodríguez', 'isabel.rodriguez@gmail.com', '333333333', '2023-06-06',5);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Carlos', 'Fernández', 'carlos.fernandez@gmail.com', '444444444', '2023-06-07',5);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Sofía', 'López', 'sofia.lopez@gmail.com', '666666666', '2023-06-08',4);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Miguel', 'Gómez', 'miguel.gomez@gmail.com', '777777777', '2023-06-09',2);
+INSERT INTO clientes (nombre, apellido, email, phone_number, create_at, region_id) VALUES ('Ana', 'Torres', 'ana.torres@gmail.com', '888888888', '2023-06-10',6);
 
 
 INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Belleza Total', 'belleza.total@example.com', '555-1234', '2023-06-10');
@@ -30,3 +30,14 @@ INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Ce
 INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Spa Zen', 'spa.zen@example.com', '555-0123', '2023-06-10');
 INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Salón de Belleza Delicadeza', 'salon.delicadeza@example.com', '555-4567', '2023-06-10');
 INSERT INTO companies (company_name, email, phone_number, create_at) VALUES ('Estudio de Estética Sofisticada', 'estudio.sofisticada@example.com', '555-8901', '2023-06-10');
+
+/* Creamos algunos usuarios con sus roles */
+INSERT INTO `usuarios` (username, password, enabled, nombre, apellido, email) VALUES ('andres','$2a$10$oR/Z101hp2WVYbqRUiNvd.joc.39r8Ek/9snZGxM4vCL.9IFybTDO',1, 'Marc', 'Serrano','marcserrano@gmail.com');
+INSERT INTO `usuarios` (username, password, enabled, nombre, apellido, email) VALUES ('admin','$2a$10$iU3hff9IR4zJCsC3kDA3AOjFMSNYxjltulRrE1yZlvetP.OEIgr8y',1, 'Martin', 'Serrano','m.serrano@gmail.com');
+
+INSERT INTO `roles` (nombre) VALUES ('ROLE_USER');
+INSERT INTO `roles` (nombre) VALUES ('ROLE_ADMIN');
+
+INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (1, 1);
+INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (2, 2);
+INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (2, 1);
