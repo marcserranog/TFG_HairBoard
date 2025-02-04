@@ -1,4 +1,4 @@
-# TFG_HairBoard
+# HairBoard
  
 Antes de usar la aplicación tengo que explicarte un par de cosas.
 - Primero de todo (clientes-app) es el frontEnd y tiene un README, que tienes que leer para su correcto funcionamiento.
